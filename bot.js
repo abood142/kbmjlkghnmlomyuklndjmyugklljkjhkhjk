@@ -112,7 +112,7 @@ client.on('guildMemberAdd', member=> {
             .setAuthor(message.author.username, message.author.avatarURL)
         .setFooter(`${message.guild.name} `)
      message.channel.send(embed500)
-     message.author.send('**`لقد تم إعطاء ميوت بسبب النشر إذا كان عن طريق الخطا فتكلم مع الإدارة`**');
+     message.author.send('**`مخالفة قانون`**');
    
        
     }
@@ -173,5 +173,23 @@ client.on("message", message => {
         log.send({embed})
     }
 });
+   client.on("message", message => {
+    if (message.content === "$help") {
+     const embed = new Discord.RichEmbed() 
+         .setColor("#00FF00")
+         .setDescription(`:boom: :fire: **اوامر البوت** :fire::boom: 
+        **1-:gear: امر تحذير تحت الصيانه:gear: **
+		_________________
+		**2-امر اسكت يعطي ميوت كتابي
+لازم رتبة Manage Roles**
+		_________________
+    **3-Avatar صورة الشخص مع المنشن**
+    _________________
+		**البوت من صنع ! Evil !ٌُ Aboood#7163**
+		_________________`)
+   message.author.sendEmbed(embed)
+   
+   }
+   });
 
 client.login(process.env.BOT_TOKEN)
