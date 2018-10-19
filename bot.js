@@ -151,10 +151,11 @@ client.on("message", message => {
   
   });
   client.on('message', message => {
+    var prefix = "$";
     let log = message.guild.channels.find('name', 'log');
     let reason = message.content.split(" ").slice(2).join(' ');
     let p = message.mentions.members.first();
-    if(message.content.startsWith(prefix + "warn")){
+    if(message.content.startsWith(prefix + "تحذير")){
         if(!message.member.hasPermission("ADMINISTRATOR")) return message.reply(`**❌ | This Command is Just for Adminstration**`);
             message.delete();
         if(!p) return message.reply(`Mention a User!`);
@@ -184,12 +185,56 @@ client.on("message", message => {
 لازم رتبة Manage Roles**
 		_________________
     **3-Avatar صورة الشخص مع المنشن**
-    _________________
+   		 _________________
 		**البوت من صنع ! Evil !ٌُ Aboood#7163**
 		_________________`)
    message.author.sendEmbed(embed)
    
    }
    });
+client.on('message', message => {
+    if (message.content.startsWith("رابط")) {
+
+  message.channel.createInvite({
+        thing: true,
+        maxUses: 2,
+        maxAge: 86400
+    }).then(invite =>
+      message.author.sendMessage(invite.url)
+    )
+  message.channel.send("``شيك خاصك``")
+
+message.author.send(`**مدة الرابط : يـوم
+عدد استخدامات الرابط : 2**`)
+
+
+    }
+});
+   client.on('message', message => {
+	var prefix = "$";
+    if (message.content.startsWith(prefix + 'امسح')) {
+      if (!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(`ماعندك صلاحيات :<`).catch(console.error);
+  message.delete()
+  if(!message.channel.guild) return;
+  let args = message.content.split(" ").slice(1);
+  
+  const messagecount = parseInt(args.join(' '));
+  
+  message.channel.fetchMessages({
+  
+  limit: messagecount
+  
+  }).then(messages => message.channel.bulkDelete(messages));
+  message.channel.sendMessage("", {embed: {
+    title: "``تم مسح الشات بنجاح``",
+    color: 0x06DF00,
+    footer: {
+    
+    }
+    }}).then(msg => {msg.delete(3000)});
+  };
+  
+  });
+
 
 client.login(process.env.BOT_TOKEN)
