@@ -28,6 +28,7 @@ client.user.setGame(`| Best|Day |`,"https://www.twitch.tv/NICKMERCS")
   console.log('')
 });
 client.on('message', message => {
+	var prefix = "$";
 if (message.content.startsWith(prefix + "avatar")) {
   var mentionned = message.mentions.users.first();
 var x5bzm;
