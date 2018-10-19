@@ -187,7 +187,7 @@ client.on("message", message => {
 		_________________
     **3-Avatar صورة الشخص مع المنشن**
    		 _________________
-		**البوت من صنع ! Evil !ٌُ Aboood#7163**
+		**البوت من صنع ! Aboood#7163**
 		_________________`)
    message.author.sendEmbed(embed)
    
